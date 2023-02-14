@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class UsuarioRol {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter @Column(name = "usuario_rol_id")
     private Long usuarioRolId;
 
@@ -19,7 +19,7 @@ public class UsuarioRol {
     private Usuario usuario;
 
     @Getter @Setter
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private Rol rol;
 
     public UsuarioRol(){

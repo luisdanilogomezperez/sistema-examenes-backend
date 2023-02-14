@@ -2,6 +2,7 @@ package com.sistema.examenes.serviceImpl;
 
 import com.sistema.examenes.entity.Usuario;
 import com.sistema.examenes.entity.UsuarioRol;
+import com.sistema.examenes.exceptions.UsuarioFoundException;
 import com.sistema.examenes.repository.RolRepository;
 import com.sistema.examenes.repository.UsuarioRepository;
 import com.sistema.examenes.service.UsuarioService;
@@ -29,16 +30,17 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public Usuario guardarUsuario(Usuario usuario, Set<UsuarioRol> usuarioRoles) throws Exception {
-        Usuario usuarioLocal = this.usuarioRepository.findByUsername(usuario.getUsername());
-        if (usuarioLocal != null){
+        Usuario usuarioLocal = usuarioRepository.findByUsername(usuario.getUsername());
+        if(usuarioLocal != null){
             System.out.println("El usuario ya existe");
-            throw  new Exception("El usuario ya esta presente");
-        }else {
+            throw new UsuarioFoundException("El usuario ya esta presente");
+        }
+        else{
             for(UsuarioRol usuarioRol:usuarioRoles){
-                this.rolRepository.save(usuarioRol.getRol());
+                rolRepository.save(usuarioRol.getRol());
             }
             usuario.getUsuarioRoles().addAll(usuarioRoles);
-            usuarioLocal = this.usuarioRepository.save(usuario);
+            usuarioLocal = usuarioRepository.save(usuario);
         }
         return usuarioLocal;
     }
