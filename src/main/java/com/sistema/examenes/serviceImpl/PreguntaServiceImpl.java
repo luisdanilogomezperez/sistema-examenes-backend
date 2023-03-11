@@ -39,7 +39,7 @@ public class PreguntaServiceImpl implements PreguntaService {
     @Override
     public void eliminarPregunta(Long preguntaId) {
         Pregunta pregunta = new Pregunta();
-        pregunta.setPregutaId(preguntaId);
+        pregunta.setPreguntaId(preguntaId);
         preguntaRepository.delete(pregunta);
     }
 
