@@ -47,4 +47,9 @@ public class PreguntaServiceImpl implements PreguntaService {
     public Set<Pregunta> obtenerPreguntasDelExamen(Examen examen) {
         return preguntaRepository.findByExamen(examen) ;
     }
+
+    @Override
+    public Pregunta listarPregunta(Long preguntaId) {
+        return this.preguntaRepository.getOne(preguntaId);
+    }
 }

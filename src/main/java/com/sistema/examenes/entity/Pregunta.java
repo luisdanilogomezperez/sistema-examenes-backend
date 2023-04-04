@@ -37,6 +37,10 @@ public class Pregunta {
     private String opcion4;
     @Getter
     @Setter
+    @Transient
+    private String respuestaDada;
+    @Getter
+    @Setter
     private String respuesta;
 
     @Getter

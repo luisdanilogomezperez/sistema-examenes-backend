@@ -32,7 +32,7 @@ public class Examen {
     private String numeroDePreguntas;
     @Getter
     @Setter
-    private boolean activo=true;
+    private Boolean activo=false;
     @Getter
     @Setter
     @ManyToOne(fetch = FetchType.EAGER)
